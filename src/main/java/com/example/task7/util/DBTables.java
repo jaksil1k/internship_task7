@@ -29,7 +29,7 @@ public final class DBTables {
                 """;
 
     private static final String READINGS = """
-                CREATE TABLE IF NOT EXISTS to_do_list(
+                CREATE TABLE IF NOT EXISTS readings(
                 id SERIAL PRIMARY KEY,
                 meter_id SERIAL NOT NULL,
                 reading double precision NOT NULL,
