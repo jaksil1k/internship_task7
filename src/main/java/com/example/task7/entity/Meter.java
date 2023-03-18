@@ -1,28 +1,31 @@
 package com.example.task7.entity;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Meter {
     private Long meterId;
-    private String meterType;
+    private String type;
     private String meterGroup;
-    private Date date;
+    private Date timestamp;
     private Double currentReading;
 
-    public Meter(Long meterId, String meterType, String meterGroup, Date date, Double currentReading) {
+    public Meter(Long meterId, String type, String meterGroup, Date timestamp, Double currentReading) {
         this.meterId = meterId;
-        this.meterType = meterType;
+        this.type = type;
         this.meterGroup = meterGroup;
-        this.date = date;
+        this.timestamp = timestamp;
         this.currentReading = currentReading;
     }
 
-    public Meter(String meterType, String meterGroup, Date date, Double currentReading) {
-        this.meterType = meterType;
+    public Meter(String type, String meterGroup, Date timestamp, Double currentReading) {
+        this.type = type;
         this.meterGroup = meterGroup;
-        this.date = date;
+        this.timestamp = timestamp;
         this.currentReading = currentReading;
+    }
+
+    public Meter() {
     }
 
     public Long getMeterId() {
@@ -33,12 +36,12 @@ public class Meter {
         this.meterId = meterId;
     }
 
-    public String getMeterType() {
-        return meterType;
+    public String getType() {
+        return type;
     }
 
-    public void setMeterType(String meterType) {
-        this.meterType = meterType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getMeterGroup() {
@@ -49,12 +52,12 @@ public class Meter {
         this.meterGroup = meterGroup;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public Double getCurrentReading() {

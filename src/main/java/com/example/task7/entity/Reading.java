@@ -1,19 +1,26 @@
 package com.example.task7.entity;
 
+import java.sql.Date;
+
 public class Reading {
     private Long id;
     private Long meterId;
     private Double reading;
 
-    public Reading(Long id, Long meterId, Double reading) {
+    private Date date;
+
+    public Reading(Long id, Long meterId, Double reading, Date date) {
         this.id = id;
         this.meterId = meterId;
         this.reading = reading;
+        this.date = date;
     }
 
-    public Reading(Long meterId, Double reading) {
+    public Reading(Long meterId, Double reading, Date date) {
         this.meterId = meterId;
         this.reading = reading;
+        this.date = date;
+
     }
 
     public Reading() {
@@ -41,5 +48,13 @@ public class Reading {
 
     public void setReading(Double reading) {
         this.reading = reading;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

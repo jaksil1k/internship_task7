@@ -33,6 +33,7 @@ public final class DBTables {
                 id SERIAL PRIMARY KEY,
                 meter_id SERIAL NOT NULL,
                 reading double precision NOT NULL,
+                date TIMESTAMP NOT NULL,
                 CONSTRAINT fk_meter
                 FOREIGN KEY(meter_id)
                 REFERENCES meters(meter_id)
