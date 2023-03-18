@@ -38,10 +38,11 @@ public class Controller {
         }
 
         if (!meterService.isPresent(meter.getMeterId())) {
-            meter.setMeterId(meterService.create(meter).getMeterId());
+            meter = meterService.create(meter);
         } else {
             meterService.update(meter);
         }
+
 
         readingService.create(new Reading(meter.getMeterId(), meter.getCurrentReading(), meter.getTimestamp()));
         return meter;

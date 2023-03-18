@@ -79,4 +79,15 @@ public class Meter {
     public void setCurrentReading(Double currentReading) {
         this.currentReading = currentReading;
     }
+
+    @Override
+    public String toString() {
+        return "Meter{" +
+                "meterId=" + meterId +
+                ", type='" + type + '\'' +
+                ", meterGroup='" + meterGroup + '\'' +
+                ", timestamp=" + timestamp +
+                ", currentReading=" + currentReading +
+                '}';
+    }
 }

@@ -9,7 +9,15 @@ import java.util.List;
 @Service
 public class MeterGroupService {
 
-    private final MeterGroupDao meterGroupDao = MeterGroupDao.getInstance();
+    private MeterGroupDao meterGroupDao = MeterGroupDao.getInstance();
+
+    public MeterGroupService() {
+    }
+
+    public MeterGroupService(MeterGroupDao meterGroupDao) {
+        this.meterGroupDao = meterGroupDao;
+    }
+
     public boolean isPresent(String meterGroup) {
         return meterGroupDao.isPresent(meterGroup);
     }

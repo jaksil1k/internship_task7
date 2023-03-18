@@ -11,9 +11,15 @@ import java.sql.Statement;
 
 @Service
 public class ReadingService {
-    private final ReadingDao readingDao = ReadingDao.getInstance();
+    private ReadingDao readingDao = ReadingDao.getInstance();
 
 
+    public ReadingService() {
+    }
+
+    public ReadingService(ReadingDao readingDao) {
+        this.readingDao = readingDao;
+    }
 
     public Reading create(Reading reading) {
         return readingDao.create(reading);

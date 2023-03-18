@@ -25,8 +25,8 @@ public class MeterDao {
     }
 
     private static final String SAVE_SQL = """
-            INSERT INTO meters(meter_type, meter_group, meter_timestamp , current_reading)
-            VALUES(?, ?, ?, ?)
+            INSERT INTO meters(meter_type, meter_group, meter_timestamp , current_reading, meter_id)
+            VALUES(?, ?, ?, ?, ?)
             """;
 
     private static final String IS_PRESENT_SQL = """
@@ -50,6 +50,7 @@ public class MeterDao {
             prepareStatement.setString(2, meter.getMeterGroup());
             prepareStatement.setDate(3, meter.getTimestamp());
             prepareStatement.setDouble(4, meter.getCurrentReading());
+            prepareStatement.setLong(5, meter.getMeterId());
             prepareStatement.executeUpdate();
 
             var result = prepareStatement.getGeneratedKeys();

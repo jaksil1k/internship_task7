@@ -11,20 +11,27 @@ import java.util.List;
 @Service
 public class MeterService {
 
-    private final MeterDao meterDao = MeterDao.getInstance();
+    private MeterDao meterDao = MeterDao.getInstance();
+
+    public MeterService(MeterDao meterDao) {
+        this.meterDao = meterDao;
+    }
+
+    public MeterService() {
+    }
 
     public Meter create(Meter meter) {
         return meterDao.create(meter);
     }
 
     public boolean isPresent(Long meterId) {
+        if (meterId < 1) {
+            throw new RuntimeException("meterId must me more than 0");
+        }
         return meterDao.isPresent(meterId);
     }
 
     public void update(Meter meter) {
-        if (meter.getMeterId() < 1) {
-            throw new RuntimeException("id must be more than 0");
-        }
         meterDao.update(meter);
     }
 
