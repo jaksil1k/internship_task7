@@ -9,6 +9,7 @@ import com.example.task7.entity.Reading;
 import com.example.task7.service.MeterGroupService;
 import com.example.task7.service.MeterService;
 import com.example.task7.service.ReadingService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class Controller {
     }
 
     @PostMapping
-    public Meter meterReading(@RequestBody Meter meter) {
+    public Meter meterReading(@Valid @RequestBody Meter meter) {
 
         if (!meterGroupService.isPresent(meter.getMeterGroup())) {
             meterGroupService.create(meter.getMeterGroup());

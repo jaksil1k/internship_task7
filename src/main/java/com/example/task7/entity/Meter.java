@@ -1,13 +1,25 @@
 package com.example.task7.entity;
 
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.sql.Date;
 
+
 public class Meter {
+    @NotNull
     private Long meterId;
+    @NotBlank
     private String type;
+    @NotBlank
     private String meterGroup;
+    @NotNull
     private Date timestamp;
+    @Positive(message = "Must be positive")
+    @NotNull
     private Double currentReading;
 
     public Meter(Long meterId, String type, String meterGroup, Date timestamp, Double currentReading) {
