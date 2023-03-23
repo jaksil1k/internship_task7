@@ -30,6 +30,12 @@ public class Meter {
         this.currentReading = currentReading;
     }
 
+    public Meter(Long meterId, Date timestamp, Double currentReading) {
+        this.meterId = meterId;
+        this.timestamp = timestamp;
+        this.currentReading = currentReading;
+    }
+
     public Meter(String type, String meterGroup, Date timestamp, Double currentReading) {
         this.type = type;
         this.meterGroup = meterGroup;

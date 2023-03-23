@@ -1,21 +1,22 @@
 package com.example.task7.service
 
-import com.example.task7.dao.MeterGroupDao
+
+import com.example.task7.repository.MeterGroupRepository
 import spock.lang.Specification
 import spock.lang.Subject
 
 class MeterGroupServiceTest extends Specification {
     @Subject MeterGroupService meterGroupService;
 
-    MeterGroupDao meterGroupDao = Mock()
+    MeterGroupRepository meterGroupRepository = Mock()
 
     void setup() {
-        meterGroupService = new MeterGroupService(meterGroupDao)
+        meterGroupService = new MeterGroupService(meterGroupRepository)
     }
 
     def "IsPresent"() {
         setup:
-        1 * meterGroupDao.isPresent("room1") >> true
+        1 * meterGroupRepository.existsById("room1") >> true
         expect:
         meterGroupService.isPresent("room1")
 
@@ -25,13 +26,13 @@ class MeterGroupServiceTest extends Specification {
         when:
         meterGroupService.create("room1")
         then:
-        1 * meterGroupDao.create(_)
+        1 * meterGroupRepository.save(_)
     }
 
     def "GetAll"() {
         when:
         meterGroupService.getAll()
         then:
-        1 * meterGroupDao.getAll() >> List.of()
+        1 * meterGroupRepository.findAll() >> List.of()
     }
 }

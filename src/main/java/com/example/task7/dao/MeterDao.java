@@ -35,7 +35,7 @@ public class MeterDao {
             """;
 
     private static final String FIND_ALL_BY_METER_GROUP = """
-            select m.meter_id, m.meter_type,\s
+            select m.meter_id, m.meter_type,
             (select max(reading) from readings r where m.meter_id = r.meter_id),
             (select min(reading) from readings r where m.meter_id = r.meter_id),
             m.current_reading from meters m

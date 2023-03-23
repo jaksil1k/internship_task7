@@ -2,26 +2,22 @@ package com.example.task7.service;
 
 import com.example.task7.dao.ReadingDao;
 import com.example.task7.entity.Reading;
-import com.example.task7.util.ConnectionManager;
+import com.example.task7.repository.ReadingRepository;
 import org.springframework.stereotype.Service;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 @Service
 public class ReadingService {
-    private ReadingDao readingDao = ReadingDao.getInstance();
+    private ReadingRepository readingRepository;
 
 
     public ReadingService() {
     }
 
-    public ReadingService(ReadingDao readingDao) {
-        this.readingDao = readingDao;
+    public ReadingService(ReadingRepository readingRepository) {
+        this.readingRepository = readingRepository;
     }
 
     public Reading create(Reading reading) {
-        return readingDao.create(reading);
+        return readingRepository.save(reading);
     }
 }
