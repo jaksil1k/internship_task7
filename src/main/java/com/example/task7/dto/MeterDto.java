@@ -1,6 +1,13 @@
 package com.example.task7.dto;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "meters")
 public class MeterDto {
+    @Id
     private Long meterId;
     private String meterType;
     private Double minReading;

@@ -13,16 +13,13 @@ import java.util.List;
 @Service
 public class MeterService {
 
-    private MeterRepository meterRepository;
-    private MeterDtoRepository meterDtoRepository;
+    private final MeterRepository meterRepository;
+    private final MeterDtoRepository meterDtoRepository;
 
     @Autowired
     public MeterService(MeterRepository meterRepository, MeterDtoRepository meterDtoRepository) {
         this.meterRepository = meterRepository;
         this.meterDtoRepository = meterDtoRepository;
-    }
-
-    public MeterService() {
     }
 
     public Meter create(Meter meter) {

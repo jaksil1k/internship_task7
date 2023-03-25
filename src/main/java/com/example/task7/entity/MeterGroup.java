@@ -1,6 +1,11 @@
 package com.example.task7.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class MeterGroup {
+    @Id
     private String name;
 
     public MeterGroup(String name) {

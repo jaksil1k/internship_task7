@@ -11,10 +11,7 @@ import java.util.List;
 @Service
 public class MeterGroupService {
 
-    private MeterGroupRepository meterGroupRepository;
-
-    public MeterGroupService() {
-    }
+    private final MeterGroupRepository meterGroupRepository;
 
     @Autowired
     public MeterGroupService(MeterGroupRepository meterGroupRepository) {

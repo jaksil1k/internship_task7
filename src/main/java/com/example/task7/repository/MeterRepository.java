@@ -12,6 +12,6 @@ import java.sql.Date;
 public interface MeterRepository extends CrudRepository<Meter, Long> {
 
     @Modifying
-    @Query("update meters m set m.meter_timestamp = ?1, m.current_reading = ?2 where m.meter_id = ?3")
+    @Query(value = "update meters m set m.meter_timestamp = ?1, m.current_reading = ?2 where m.meter_id = ?3", nativeQuery = true)
     void update(Date timestamp, Double currentReading, Long meterId);
 }
