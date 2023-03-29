@@ -1,15 +1,19 @@
 package com.example.task7.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.sql.Date;
 
 @Entity
+@Table(name = "reading")
 public class Reading {
     @Id
     private Long id;
     private Long meterId;
+    @Column(name = "reading")
     private Double reading;
 
     private Date date;

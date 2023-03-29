@@ -11,12 +11,11 @@ import java.util.List;
 @Repository
 public interface MeterDtoRepository extends CrudRepository<MeterDto, Long> {
     @Query(value = """
-            select m.meter_id, m.meter_type,
-            (select max(reading) from readings r where m.meter_id = r.meter_id),
-            (select min(reading) from readings r where m.meter_id = r.meter_id),
-            m.current_reading from meters m
-            where m.meter_group = ?;
-            """,
-            nativeQuery = true)
-    List<MeterDto> getAllByMeterGroup(MeterGroup meterGroup);
+            select m.meterId, m.meterType,
+            (select max(r.reading) from Reading r where m.meterId = r.meterId),
+            (select min(r.reading) from Reading r where m.meterId = r.meterId),
+            m.currentReading from Meter m
+            where m.meterGroup = :meterGroup
+            """)
+    List<MeterDto> getAllByMeterGroup(String meterGroup);
 }

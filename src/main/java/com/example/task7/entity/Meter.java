@@ -1,6 +1,7 @@
 package com.example.task7.entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,7 +20,8 @@ public class Meter {
     @Id
     private Long meterId;
     @NotBlank
-    private String type;
+//    @Column(name = "meter_type")
+    private String meterType;
     @NotBlank
     private String meterGroup;
     @Valid
@@ -28,9 +30,9 @@ public class Meter {
     @Valid
     private Double currentReading;
 
-    public Meter(Long meterId, String type, String meterGroup, Date timestamp, Double currentReading) {
+    public Meter(Long meterId, String meterType, String meterGroup, Date timestamp, Double currentReading) {
         this.meterId = meterId;
-        this.type = type;
+        this.meterType = meterType;
         this.meterGroup = meterGroup;
         this.timestamp = timestamp;
         this.currentReading = currentReading;
@@ -42,8 +44,8 @@ public class Meter {
         this.currentReading = currentReading;
     }
 
-    public Meter(String type, String meterGroup, Date timestamp, Double currentReading) {
-        this.type = type;
+    public Meter(String meterType, String meterGroup, Date timestamp, Double currentReading) {
+        this.meterType = meterType;
         this.meterGroup = meterGroup;
         this.timestamp = timestamp;
         this.currentReading = currentReading;
@@ -60,12 +62,12 @@ public class Meter {
         this.meterId = meterId;
     }
 
-    public String getType() {
-        return type;
+    public String getMeterType() {
+        return meterType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMeterType(String type) {
+        this.meterType = type;
     }
 
     public String getMeterGroup() {
@@ -96,7 +98,7 @@ public class Meter {
     public String toString() {
         return "Meter{" +
                 "meterId=" + meterId +
-                ", type='" + type + '\'' +
+                ", type='" + meterType + '\'' +
                 ", meterGroup='" + meterGroup + '\'' +
                 ", timestamp=" + timestamp +
                 ", currentReading=" + currentReading +

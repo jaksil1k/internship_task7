@@ -37,7 +37,7 @@ public class MeterService {
         meterRepository.update(meter.getTimestamp(), meter.getCurrentReading(), meter.getMeterId());
     }
 
-    public List<MeterDto> getAllByMeterGroup(MeterGroup meterGroup) {
+    public List<MeterDto> getAllByMeterGroup(String meterGroup) {
         return meterDtoRepository.getAllByMeterGroup(meterGroup);
     }
 }

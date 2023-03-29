@@ -55,13 +55,27 @@ public class Controller {
         List<MeterGroup> meterGroups = meterGroupService.getAll();
 
         for (MeterGroup meterGroup: meterGroups) {
-            List<MeterDto> meters = meterService.getAllByMeterGroup(meterGroup);
+            List<MeterDto> meters = meterService.getAllByMeterGroup(meterGroup.getName());
 
             GroupDto group = new GroupDto(meterGroup, meters, findSumOfMeters(meters));
             report.addGroupDto(group);
         }
 
         return report;
+    }
+
+    @GetMapping("/meterGroup/{name}")
+    public GroupDto getMetersByMeterGroupByName(@PathVariable String name) {
+        List<MeterDto> meters = meterService.getAllByMeterGroup(name);
+
+        GroupDto groupDto = new GroupDto();
+        groupDto.setNumberOfMeters(meters.size());
+        groupDto.setMeterGroup(new MeterGroup(name));
+        groupDto.setMeters(meters);
+        groupDto.setGroupReading(findSumOfMeters(meters));
+
+        return groupDto;
+
     }
 
     private Double findSumOfMeters(List<MeterDto> meters) {
@@ -71,4 +85,5 @@ public class Controller {
         }
         return sum;
     }
+
 }

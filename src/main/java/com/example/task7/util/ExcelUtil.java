@@ -1,7 +1,6 @@
 package com.example.task7.util;
 
 import com.example.task7.entity.Meter;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -23,7 +22,7 @@ public class ExcelUtil {
             for (Row row : sheet) {
                 Meter meter = new Meter();
                 meter.setMeterId((long) row.getCell(0).getNumericCellValue());
-                meter.setType(row.getCell(1).getStringCellValue());
+                meter.setMeterType(row.getCell(1).getStringCellValue());
                 meter.setMeterGroup(row.getCell(2).getStringCellValue());
                 meter.setTimestamp(new Date(row.getCell(3).getDateCellValue().getTime()));
                 meter.setCurrentReading(row.getCell(4).getNumericCellValue());

@@ -46,7 +46,7 @@ public class MeterDao {
         try (Connection connection = ConnectionManager.get();
              var prepareStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
 
-            prepareStatement.setString(1, meter.getType());
+            prepareStatement.setString(1, meter.getMeterType());
             prepareStatement.setString(2, meter.getMeterGroup());
             prepareStatement.setDate(3, meter.getTimestamp());
             prepareStatement.setDouble(4, meter.getCurrentReading());

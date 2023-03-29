@@ -7,6 +7,7 @@ import java.util.List;
 
 public class GroupDto {
     private MeterGroup meterGroup;
+    private Integer numberOfMeters;
     private List<MeterDto> meters;
     private Double groupReading;
 
@@ -41,5 +42,13 @@ public class GroupDto {
 
     public void setGroupReading(Double groupReading) {
         this.groupReading = groupReading;
+    }
+
+    public Integer getNumberOfMeters() {
+        return numberOfMeters;
+    }
+
+    public void setNumberOfMeters(Integer numberOfMeters) {
+        this.numberOfMeters = numberOfMeters;
     }
 }

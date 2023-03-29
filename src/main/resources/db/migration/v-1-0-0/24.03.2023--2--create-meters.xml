@@ -3,13 +3,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet id="1" author="zhaksylyk">
-        <sql>CREATE TABLE IF NOT EXISTS meter_groups(
-            name VARCHAR(255) PRIMARY KEY)</sql>
-        <rollback>
-            DROP TABLE IF NOT EXISTS meter_groups
-        </rollback>
-    </changeSet>
+
     <changeSet id="2" author="zhaksylyk">
         <sql>CREATE TABLE IF NOT EXISTS meters(
             meter_id SERIAL PRIMARY KEY,
@@ -23,20 +17,6 @@
             );</sql>
         <rollback>
             DROP TABLE IF NOT EXISTS meters
-        </rollback>
-    </changeSet>
-
-    <changeSet id="3" author="zhaksylyk">
-        <sql>CREATE TABLE IF NOT EXISTS readings(
-            id SERIAL PRIMARY KEY,
-            meter_id SERIAL NOT NULL,
-            reading double precision NOT NULL,
-            date TIMESTAMP NOT NULL,
-            CONSTRAINT fk_meter
-            FOREIGN KEY(meter_id)
-            REFERENCES meters(meter_id))</sql>
-        <rollback>
-            DROP TABLE IF NOT EXISTS readings
         </rollback>
     </changeSet>
 
