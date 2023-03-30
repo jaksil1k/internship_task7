@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import java.sql.Date;
 
 @Entity
-@Table(name = "reading")
+@Table(name = "readings")
 public class Reading {
     @Id
     private Long id;

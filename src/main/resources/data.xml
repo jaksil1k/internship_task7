@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <METER_GROUPS name="room1 1"/>
+    <METERS meter_id="123" type="ELM777" meter_group="room1" meter_timestamp="2022-10-26T10:55:00.000Z" current_reading="125.67"/>
+    <READINGS id="123" meter_id="123" reading="125.67" date="2022-10-26T10:55:00.000Z"/>
+</dataset>

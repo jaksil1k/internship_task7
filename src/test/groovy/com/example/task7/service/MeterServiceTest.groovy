@@ -44,7 +44,7 @@ class MeterServiceTest extends Specification {
 
     def "GetAllByMeterGroup"() {
         when:
-        meterService.getAllByMeterGroup(new MeterGroup())
+        meterService.getAllByMeterGroup("some group")
         then:
         1 * meterDtoRepository.getAllByMeterGroup(_) >> List.of()
     }
