@@ -1,5 +1,6 @@
 package com.example.task7.config;
 
+import com.example.task7.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,8 +25,14 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/**")
+                .hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/v1/auth/**")
                 .permitAll()
+                .requestMatchers("/api/v1/meters/**")
+                .hasRole(Role.OPERATOR.name())
+                .requestMatchers("/api/v1/meters/")
+                .hasRole(Role.METER.name())
                 .anyRequest()
                 .authenticated()
                 .and()
