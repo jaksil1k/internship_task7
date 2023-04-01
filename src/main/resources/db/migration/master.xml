@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
     <include file="classpath:/db/migration/v-1-0-0/24.03.2023--1--create-meters_group.xml"/>
     <include file="classpath:/db/migration/v-1-0-0/24.03.2023--2--create-meters.xml"/>
     <include file="classpath:/db/migration/v-1-0-0/24.03.2023--3--create-readings.xml"/>
+    <include file="classpath:/db/migration/v-1-0-0/02.04.2023--4--create-_user.xml"/>
+    <include file="classpath:/db/migration/v-1-0-0/02.04.2023--5--insert-admin.xml"/>
 
 </databaseChangeLog>
