@@ -17,14 +17,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/meters")
-public class Controller {
+public class MeterApiController {
 
     private final MeterService meterService;
     private final MeterGroupService meterGroupService;
     private final ReadingService readingService;
 
     @Autowired
-    public Controller(MeterService meterService, MeterGroupService meterGroupService, ReadingService readingService) {
+    public MeterApiController(MeterService meterService, MeterGroupService meterGroupService, ReadingService readingService) {
         this.meterService = meterService;
         this.meterGroupService = meterGroupService;
         this.readingService = readingService;

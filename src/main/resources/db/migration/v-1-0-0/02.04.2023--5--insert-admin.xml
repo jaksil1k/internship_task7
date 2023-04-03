@@ -11,7 +11,7 @@
             <column  name="email"  value="admin"/>
             <column  name="firstname"  value="admin"/>
             <column  name="lastname"  value="admin"/>
-            <column  name="password"  value="admin"/>
+            <column  name="password"  value="$2a$10$8F7HR5BjR/TCWFhO2SfHCOr1lC4hxLCCzmo76x58U/VpMts498FIG"/>
             <column  name="role"  value="ADMIN"/>
         </insert>
     </changeSet>

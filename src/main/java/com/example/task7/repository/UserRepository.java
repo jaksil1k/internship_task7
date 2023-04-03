@@ -1,4 +1,4 @@
-package com.example.task7.dao;
+package com.example.task7.repository;
 
 
 import com.example.task7.entity.User;

@@ -11,6 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -25,19 +27,32 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/**")
-                .hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/v1/auth/**")
                 .permitAll()
                 .requestMatchers("/api/v1/meters/**")
-                .hasRole(Role.OPERATOR.name())
-                .requestMatchers("/api/v1/meters/")
-                .hasRole(Role.METER.name())
+                .hasAnyRole(Role.ADMIN.name(), Role.OPERATOR.name())
+                .requestMatchers("/admin/**")
+                .hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
+                .formLogin()
+//                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/hello", true)
+//                .loginProcessingUrl("/perform_login")
+//                .failureUrl("/login?error=true")
+//                .and()
+//                .logout()
+//                .logoutUrl("/perform_logout")
+//                .deleteCookies("JSESSIONID")
+//                .logoutSuccessHandler(logoutSuccessHandler())
+                .and()
+                .rememberMe()
+                    .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30))
+//                    .key("somethingverysecured")
+                .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

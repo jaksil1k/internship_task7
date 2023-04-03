@@ -1,6 +1,6 @@
 package com.example.task7.config;
 
-import com.example.task7.dao.UserRepository;
+import com.example.task7.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

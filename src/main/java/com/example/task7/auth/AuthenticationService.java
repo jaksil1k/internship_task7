@@ -2,7 +2,7 @@ package com.example.task7.auth;
 
 
 import com.example.task7.config.JwtService;
-import com.example.task7.dao.UserRepository;
+import com.example.task7.repository.UserRepository;
 import com.example.task7.entity.Role;
 import com.example.task7.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +28,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.METER)
+                .isNonLocked(true)
                 .build();
 
         repository.save(user);
