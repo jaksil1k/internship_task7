@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authorization.AuthenticatedAuthorizationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -27,22 +28,20 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**")
+                .requestMatchers("/api/v1/auth/**", "/", "/register")
                 .permitAll()
                 .requestMatchers("/api/v1/meters/**")
-                .hasAnyRole(Role.ADMIN.name(), Role.OPERATOR.name())
+                .hasAnyAuthority(Role.ADMIN.name(), Role.OPERATOR.name())
                 .requestMatchers("/admin/**")
-                .hasRole(Role.ADMIN.name())
+                .hasAnyAuthority(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-//                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/hello", true)
-//                .loginProcessingUrl("/perform_login")
-//                .failureUrl("/login?error=true")
-//                .and()
-//                .logout()
+                .defaultSuccessUrl("/", true)
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
 //                .logoutUrl("/perform_logout")
 //                .deleteCookies("JSESSIONID")
 //                .logoutSuccessHandler(logoutSuccessHandler())
